@@ -18,5 +18,10 @@ namespace Characters.Pedestrians
             Animator.CrossFade("Idle", normalizedTransitionDuration: 0.1f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 
+        public void SoulBeingTaken()
+        {
+            Animator.CrossFade("being-possessed", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+        }
+
     }
 }

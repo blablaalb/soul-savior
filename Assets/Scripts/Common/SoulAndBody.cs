@@ -6,12 +6,11 @@ namespace Common
 {
     public class SoulAndBody : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject _soul;
+        private Soul _soul;
         [SerializeField]
         private GameObject _body;
 
-        public GameObject Soul => _soul;
+        public Soul Soul => _soul ??= _soul = GetComponentInChildren<Soul>(true);
         public GameObject Body => _body;
     }
 }

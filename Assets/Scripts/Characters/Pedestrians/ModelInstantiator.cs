@@ -15,6 +15,7 @@ namespace Characters.Pedestrians
         public SoulAndBody Random()
         {
             SoulAndBody[] models = _modelsRoot.GetComponentsInChildren<SoulAndBody>(true).ToArray();
+            if (models == null || models.Length == 0) throw new IndexOutOfRangeException("No pedestrian models left");
             var indx = UnityEngine.Random.Range(0, models.Length);
             var model = models[indx];
             model.transform.SetParent(this.transform);
