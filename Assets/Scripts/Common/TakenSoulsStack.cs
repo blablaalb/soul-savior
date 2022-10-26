@@ -15,29 +15,32 @@ public class TakenSoulsStack : MonoBehaviour
     public static TakenSoulsStack Instance => _instance ??= _instance = FindObjectOfType<TakenSoulsStack>();
 
 
-    public void Add(Soul soul, Action callback = null)
+    public Vector3 Add(Soul soul)
     {
-        if (_souls.Count == 0)
-        {
-            _souls.Add(soul);
-        }
-
         _souls.Add(soul);
-        Sort();
+        Sort(_souls.Count - 1);
+        return CalculatePosition(_souls.Count - 1);
     }
 
-    public void Sort()
+    private Vector3 CalculatePosition(int index)
     {
         var totalWidth = _distance * _souls.Count;
         var step = totalWidth / _souls.Count;
-        var tasks = new List<UniTask>();
-        for (var i = 0; i < _souls.Count; i++)
+        var pos = new Vector3(step * (index + .5f) - totalWidth / 2, 0, 0);
+        Debug.Log(pos, _souls.Last());
+        pos = transform.TransformPoint(pos);
+        return pos;
+    }
+
+    private async void Sort(int count)
+    {
+        for (int i = 0; i < count; i++)
         {
             var soul = _souls[i];
-            var pos = new Vector3(step * (i + .5f) - totalWidth / 2, 0, 0);
-            pos = transform.TransformPoint(pos);
-            soul.Move(pos);
+            var position = CalculatePosition(i);
+            soul.Move(position);
         }
     }
+
 
 }
