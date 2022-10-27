@@ -18,6 +18,7 @@ public class Soul : MonoBehaviour
     private Transform _body;
     [SerializeField]
     private float _maxTouchDistance;
+    private StackMember _stackMember;
 
     public bool IsDraggedByPlayer => _lastTouchPos != null;
 
@@ -25,6 +26,7 @@ public class Soul : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
         _body = GetComponentInParent<SoulAndBody>().Body.transform;
+        _stackMember = GetComponent<StackMember>();
     }
 
     internal void Update()
@@ -46,6 +48,7 @@ public class Soul : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             _lastTouchPos = null;
+            _stackMember.MoveToPlace(Ease.Linear);
         }
 
         if (_lastTouchPos != null)
@@ -70,7 +73,7 @@ public class Soul : MonoBehaviour
                 transform.position.y + zyDirection.y * ySpeed,
                 transform.position.z + zyDirection.x * zSpeed
                 );
-            if (newPosition.y < 0f) newPosition.y = 0f;
+            
             transform.position = newPosition;
 
             // var newSoulPosition = new Vector3(transform.position.x + touchDirection.x * _dragSpeed * Time.deltaTime, transform.position.y, transform.position.z + touchDirection.y * _dragSpeed * Time.deltaTime);

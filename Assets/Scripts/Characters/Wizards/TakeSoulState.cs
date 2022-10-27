@@ -49,8 +49,8 @@ namespace Characters.Wizards
             soul.SetActive(true);
             await soul.Move(soul.transform.position + soul.transform.up * 3f);
             await UniTask.Delay(TimeSpan.FromSeconds(_soulMovingToStackDelay));
-            var pos = TakenSoulsStack.Instance.Add(soul);
-            await soul.Move(pos);
+            await HorizontalStack.Instance.Add(soul.GetComponent<StackMember>(), true);
+
             _wizard.Idle();
         }
 
