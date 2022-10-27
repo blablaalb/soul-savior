@@ -308,6 +308,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _dragSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _maxTouchDistance
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
 --- !u!1 &250910460
@@ -1156,6 +1164,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
+    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: _dragSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: _maxTouchDistance
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4045649882215058337, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
       propertyPath: m_Name
       value: racer-white
@@ -1310,6 +1326,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
+    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: _dragSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: _maxTouchDistance
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 8046261050159570648, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
       propertyPath: m_Name
       value: biker-black
@@ -1532,7 +1556,8 @@ MonoBehaviour:
   _startTakingSoulsDelay: 0
   _takeSoulState:
     _rotateTime: 1
-    _soulElevationDelay: 1
+    _soulElevationDelay: 2
+    _soulMovingToStackDelay: 1
   _idleState:
     _idleTime: 3
     _rotateTime: 1
@@ -1884,6 +1909,14 @@ PrefabInstance:
     - target: {fileID: 1020335157609948444, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: _dragSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: _maxTouchDistance
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}

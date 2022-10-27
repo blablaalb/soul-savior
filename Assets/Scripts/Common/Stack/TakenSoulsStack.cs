@@ -27,7 +27,6 @@ public class TakenSoulsStack : MonoBehaviour
         var totalWidth = _distance * _souls.Count;
         var step = totalWidth / _souls.Count;
         var pos = new Vector3(step * (index + .5f) - totalWidth / 2, 0, 0);
-        Debug.Log(pos, _souls.Last());
         pos = transform.TransformPoint(pos);
         return pos;
     }
@@ -37,8 +36,11 @@ public class TakenSoulsStack : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var soul = _souls[i];
-            var position = CalculatePosition(i);
-            soul.Move(position);
+            if (!soul.IsDraggedByPlayer)
+            {
+                var position = CalculatePosition(i);
+                soul.Move(position);
+            }
         }
     }
 

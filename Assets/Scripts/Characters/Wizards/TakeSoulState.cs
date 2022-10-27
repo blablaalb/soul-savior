@@ -13,6 +13,8 @@ namespace Characters.Wizards
         private float _rotateTime;
         [SerializeField]
         private float _soulElevationDelay;
+        [SerializeField]
+        private float _soulMovingToStackDelay;
         private Wizard _wizard;
         private Transform _transform;
         private WizardAnimations _animations;
@@ -40,12 +42,13 @@ namespace Characters.Wizards
 
         private async void OnTakingSoulBegan()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(_soulElevationDelay));
             Pedestrian.SoulBeingTaken();
+            await UniTask.Delay(TimeSpan.FromSeconds(_soulElevationDelay));
             var soul = Pedestrian.Soul;
             _wizard.OnSoulTaken();
             soul.SetActive(true);
             await soul.Move(soul.transform.position + soul.transform.up * 3f);
+            await UniTask.Delay(TimeSpan.FromSeconds(_soulMovingToStackDelay));
             var pos = TakenSoulsStack.Instance.Add(soul);
             await soul.Move(pos);
             _wizard.Idle();
