@@ -6,7 +6,7 @@ using System.Threading;
 using Common;
 using PER.Common.FSM;
 
-namespace Ccmmon.Souls
+namespace Common.Souls
 {
     public class Soul : Context<ISoulState>
     {
@@ -20,6 +20,7 @@ namespace Ccmmon.Souls
         private ReturnToStackState _returnToStackState;
         [SerializeField]
         private InsideStackState _insideStackState;
+        private MovingInsideStackState _movingInsideStackState;
 
 
         internal void Awake()
@@ -29,6 +30,13 @@ namespace Ccmmon.Souls
             _addToStackState.Initialize(this.transform);
             _follorTouchState.Initialize(this, _body);
             _returnToStackState.Initialize(_stackMember);
+            _movingInsideStackState = GetComponent<MovingInsideStackState>();
+        }
+
+        public void MoveToPLaceInStack()
+        {
+            if (_currentState != _movingInsideStackState)
+                EnterState(_movingInsideStackState);
         }
 
         public void AddToStack()

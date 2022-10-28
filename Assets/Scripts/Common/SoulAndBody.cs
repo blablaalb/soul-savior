@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Ccmmon.Souls;
+using Common.Souls;
 using UnityEngine;
 
 namespace Common

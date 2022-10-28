@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Threading;
 
-namespace Ccmmon.Souls
+namespace Common.Souls
 {
     [System.Serializable]
     public class AddToStackState : ISoulState

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ccmmon.Souls
+namespace Common.Souls
 {
     [System.Serializable]
     public class FollowTouchState : ISoulState
@@ -10,6 +10,7 @@ namespace Ccmmon.Souls
         private Transform _body;
         private Transform _transform;
         private Soul _soul;
+        private StackMember _stackMember;
 
         public Vector2 DirectionNormalized { get; set; }
         public string StateName => "Follow Touch";
@@ -17,6 +18,7 @@ namespace Ccmmon.Souls
         public void Initialize(Soul soul, Transform body)
         {
             _soul = soul;
+            _stackMember = _soul.GetComponent<StackMember>();
             _transform = _soul.transform;
             _body = body;
         }
@@ -24,6 +26,7 @@ namespace Ccmmon.Souls
 
         public void Enter()
         {
+            _stackMember.StopMoving();
         }
 
         public void Exit()

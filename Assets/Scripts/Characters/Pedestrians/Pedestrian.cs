@@ -4,7 +4,7 @@ using PER.Common.FSM;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Common;
-using Ccmmon.Souls;
+using Common.Souls;
 
 namespace Characters.Pedestrians
 {

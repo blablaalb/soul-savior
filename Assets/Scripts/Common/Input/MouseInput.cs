@@ -1,4 +1,4 @@
-using Ccmmon.Souls;
+using Common.Souls;
 using PER.Common;
 using UnityEngine;
 
@@ -8,6 +8,14 @@ namespace Common.Inputs
     {
         private Soul _soul;
         private Vector2? _lastPointerPosition;
+
+        override protected void Awake()
+        {
+            base.Awake();
+#if !UNITY_EDITOR
+            this.enabled = false;
+#endif
+        }
 
         internal void Update()
         {
@@ -53,5 +61,4 @@ namespace Common.Inputs
 
 
     }
-
 }

@@ -1,6 +1,6 @@
 using PER.Common.FSM;
 
-namespace Ccmmon.Souls
+namespace Common.Souls
 {
     public interface ISoulState : IState
     {

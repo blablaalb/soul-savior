@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ccmmon.Souls
+namespace Common.Souls
 {
     [System.Serializable]
     public class ReturnToStackState : ISoulState
@@ -25,6 +25,7 @@ namespace Ccmmon.Souls
 
         public void Exit()
         {
+            _stackMember.StopMoving();
         }
 
         public void OnFixedUpdate()
