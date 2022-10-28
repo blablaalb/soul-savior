@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Common.Inputs
 {
-    public class MouseInput : Singleton<TouchInput>
+    public class MouseInput : Singleton<MouseInput>
     {
         private Soul _soul;
         private Vector2? _lastPointerPosition;

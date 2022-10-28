@@ -4,6 +4,7 @@ using System.Linq;
 using DG.Tweening;
 using System;
 using Cysharp.Threading.Tasks;
+using Ccmmon.Souls;
 
 public class HorizontalStack : MonoBehaviour
 {
@@ -42,7 +43,11 @@ public class HorizontalStack : MonoBehaviour
             var stackMember = _stackMembers[i];
             var position = CalculatePosition(i);
             stackMember.StackPosition = position;
-            stackMember.MoveToPlace();
+            if (stackMember.GetComponent<Soul>() is Soul soul)
+            {
+                if (soul.CurrentState.StateName == "Inside Stack")
+                    stackMember.MoveToPlace();
+            }
         }
 #pragma warning restore CS4014
     }

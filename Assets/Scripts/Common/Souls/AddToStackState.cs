@@ -16,6 +16,7 @@ namespace Ccmmon.Souls
         private float _elevationTime;
         private Transform _initialParent;
         private CancellationTokenSource _cts;
+        private Soul _soul;
 
         public string StateName => "Soul Being Added to Stack";
 
@@ -23,6 +24,7 @@ namespace Ccmmon.Souls
         {
             _transform = transform;
             _stackMember = _transform.GetComponent<StackMember>();
+            _soul = _stackMember.GetComponent<Soul>();
         }
 
         public async void Enter()
@@ -33,6 +35,7 @@ namespace Ccmmon.Souls
             _transform.parent = null;
             await _transform.DOMoveY(_elevetationHeight, _elevationTime).WithCancellation(_cts.Token);
             await _stackMember.AddSelf(true);
+            _soul.InsideStack();
         }
 
         public void Exit()
