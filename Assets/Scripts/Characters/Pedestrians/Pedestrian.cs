@@ -4,10 +4,11 @@ using PER.Common.FSM;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Common;
+using Ccmmon.Souls;
 
 namespace Characters.Pedestrians
 {
-    public class Pedestrian : Context<IState>
+    public class Pedestrian : Context<IPedestrianState>
     {
         [SerializeField]
         private MoveAtPlayerState _moveAtPlayerState;

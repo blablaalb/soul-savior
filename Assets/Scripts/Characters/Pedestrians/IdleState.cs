@@ -1,10 +1,9 @@
-using PER.Common.FSM;
 using UnityEngine;
 
 namespace Characters.Pedestrians
 {
     [System.Serializable]
-    public class IdleState : IState
+    public class IdleState : IPedestrianState
     {
         private PedestrianAnimations _animations;
 

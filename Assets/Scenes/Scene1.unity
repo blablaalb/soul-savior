@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1863908526479949458, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
       propertyPath: _dragSpeed
       value: 10
@@ -315,6 +319,18 @@ PrefabInstance:
     - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
       propertyPath: _maxTouchDistance
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _follorTouchState._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _addToStackState._elevationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _addToStackState._elevetationHeight
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
@@ -1210,6 +1226,18 @@ PrefabInstance:
       propertyPath: _maxTouchDistance
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: _follorTouchState._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: _addToStackState._elevationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: _addToStackState._elevetationHeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4045649882215058337, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
       propertyPath: m_Name
       value: racer-white
@@ -1261,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: 4045649882215058338, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045649882242786363, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
@@ -1372,6 +1404,18 @@ PrefabInstance:
       propertyPath: _maxTouchDistance
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: _follorTouchState._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: _addToStackState._elevationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: _addToStackState._elevetationHeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8046261050159570648, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
       propertyPath: m_Name
       value: biker-black
@@ -1423,6 +1467,10 @@ PrefabInstance:
     - target: {fileID: 8046261050159570654, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046261050939948829, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
@@ -1685,6 +1733,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d57583f8795604daa50dd2880cc3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1619693114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619693115}
+  - component: {fileID: 1619693116}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619693115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619693114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1619693116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619693114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b67a626f22604bbac155ad24b5ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737782715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,6 +2006,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
+    - target: {fileID: 1020335155809745686, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1020335157609948443, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1974,6 +2069,18 @@ PrefabInstance:
     - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
       propertyPath: _maxTouchDistance
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: _follorTouchState._speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: _addToStackState._elevationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
+      propertyPath: _addToStackState._elevetationHeight
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}

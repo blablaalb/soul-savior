@@ -15,7 +15,7 @@ public class HorizontalStack : MonoBehaviour
     public static HorizontalStack Instance => _instance ??= _instance = FindObjectOfType<HorizontalStack>();
 
 
-    public async UniTask Add(StackMember stackMember, bool moveImmediately = false)
+    public virtual async UniTask Add(StackMember stackMember, bool moveImmediately = false)
     {
         _stackMembers.Add(stackMember);
         Sort(_stackMembers.Count - 1);
@@ -24,7 +24,7 @@ public class HorizontalStack : MonoBehaviour
             await stackMember.MoveToPlace();
     }
 
-    private Vector3 CalculatePosition(int index)
+    protected Vector3 CalculatePosition(int index)
     {
         var stackMember = _stackMembers[index];
         var totalWidth = (stackMember.Width + _distance) * _stackMembers.Count;
@@ -34,15 +34,15 @@ public class HorizontalStack : MonoBehaviour
         return pos;
     }
 
-    private void Sort(int count)
+    protected virtual void Sort(int count)
     {
 #pragma warning disable CS4014
         for (int i = 0; i < count; i++)
         {
-            var soul = _stackMembers[i];
+            var stackMember = _stackMembers[i];
             var position = CalculatePosition(i);
-            soul.StackPosition = position;
-            soul.MoveToPlace();
+            stackMember.StackPosition = position;
+            stackMember.MoveToPlace();
         }
 #pragma warning restore CS4014
     }

@@ -1,10 +1,9 @@
-using PER.Common.FSM;
 using UnityEngine;
 
 namespace Characters.Pedestrians
 {
     [System.Serializable]
-    public class MoveAtPlayerState : IState
+    public class MoveAtPlayerState : IPedestrianState
     {
         private Player _player;
         private Transform _transform;

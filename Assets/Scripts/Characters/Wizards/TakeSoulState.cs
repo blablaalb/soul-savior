@@ -30,14 +30,12 @@ namespace Characters.Wizards
         }
 
 
-        public void Enter()
+        public async void Enter()
         {
             _animations.TakingSoulBegan += OnTakingSoulBegan;
             var rotationDirection = _transform.position - new Vector3(Pedestrian.transform.position.x, _transform.position.y, Pedestrian.transform.position.z);
-            _transform.DORotate(Quaternion.LookRotation(rotationDirection).eulerAngles, _rotateTime).OnComplete(() =>
-            {
-                _animations.TakeSoul();
-            });
+            await _transform.DORotate(Quaternion.LookRotation(rotationDirection).eulerAngles, _rotateTime);
+            _animations.TakeSoul();
         }
 
         private async void OnTakingSoulBegan()
@@ -46,11 +44,7 @@ namespace Characters.Wizards
             await UniTask.Delay(TimeSpan.FromSeconds(_soulElevationDelay));
             var soul = Pedestrian.Soul;
             _wizard.OnSoulTaken();
-            soul.SetActive(true);
-            await soul.Move(soul.transform.position + soul.transform.up * 3f);
-            await UniTask.Delay(TimeSpan.FromSeconds(_soulMovingToStackDelay));
-            await HorizontalStack.Instance.Add(soul.GetComponent<StackMember>(), true);
-
+            soul.AddToStack();
             _wizard.Idle();
         }
 

@@ -1,14 +1,15 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Threading;
 
 public class StackMember : MonoBehaviour
 {
     public float Width;
     private Vector3 _stackPosition;
-    private Tween _moveTween;
     [SerializeField]
     private float _moveTime;
+    private CancellationTokenSource _cts;
 
     public Vector3 StackPosition
     {
@@ -20,20 +21,20 @@ public class StackMember : MonoBehaviour
     }
 
 
-    public async UniTask MoveToPlace(Ease ease = Ease.OutQuart)
+    public virtual async UniTask MoveToPlace(Ease ease = Ease.OutQuart)
     {
-        if (_moveTween != null) _moveTween.Kill();
-        _moveTween = transform.DOMove(StackPosition, _moveTime).SetEase(ease).OnComplete(() =>
-        {
-            _moveTween = null;
-        });
-        var task = _moveTween.ToUniTask();
-        await task;
+        _cts = new CancellationTokenSource();
+        await transform.DOMove(StackPosition, _moveTime).SetEase(ease).WithCancellation(_cts.Token);
     }
 
-    public void StopMoving()
+    public virtual async UniTask AddSelf(bool moveImmediately = false)
     {
-        _moveTween?.Kill();
+        await HorizontalStack.Instance.Add(this, moveImmediately);
+    }
+
+    public virtual void StopMoving()
+    {
+        _cts.Cancel();
     }
 
 

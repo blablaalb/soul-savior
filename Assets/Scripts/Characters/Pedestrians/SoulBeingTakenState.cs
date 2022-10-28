@@ -8,7 +8,7 @@ using System;
 namespace Characters.Pedestrians
 {
     [System.Serializable]
-    public class SoulBeingTakenState : IState
+    public class SoulBeingTakenState : IPedestrianState
     {
         public string StateName => "Soul Being Taken";
 

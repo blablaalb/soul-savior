@@ -6,6 +6,8 @@ namespace PER.Common.FSM
     {
         protected T _currentState;
 
+        public T CurrentState => _currentState;
+
         protected virtual void EnterState(T state)
         {
             if (_currentState != null)
