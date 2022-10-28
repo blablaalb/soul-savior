@@ -45,7 +45,7 @@ public class HorizontalStack : MonoBehaviour
             stackMember.StackPosition = position;
             if (stackMember.GetComponent<Soul>() is Soul soul)
             {
-                if (soul.CurrentState.StateName == "Inside Stack")
+                if (soul.CurrentState.StateName == "Inside Stack" || soul.CurrentState.StateName == "Return to Stack" || soul.CurrentState.StateName == "Soul Being Added to Stack")
                     stackMember.MoveToPlace();
             }
         }
