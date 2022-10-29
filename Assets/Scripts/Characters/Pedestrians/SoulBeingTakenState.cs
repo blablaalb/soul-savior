@@ -15,6 +15,9 @@ namespace Characters.Pedestrians
         private PedestrianAnimations _animations;
         private Transform _transform;
         private SoulAndBody _soulAndBody;
+        [SerializeField]
+        private float _duration;
+        private Pedestrian _pedestrian;
 
 
         public void Initialize(PedestrianAnimations animations, SoulAndBody soulAndBody, Transform transform)
@@ -22,11 +25,14 @@ namespace Characters.Pedestrians
             _animations = animations;
             _soulAndBody = soulAndBody;
             _transform = transform;
+            _pedestrian = _transform.GetComponent<Pedestrian>();
         }
 
-        public void Enter()
+        public async void Enter()
         {
             _animations.SoulBeingTaken();
+            await UniTask.Delay(TimeSpan.FromSeconds(_duration));
+            _pedestrian.MoveAtPlayer();
         }
 
         public void Exit()

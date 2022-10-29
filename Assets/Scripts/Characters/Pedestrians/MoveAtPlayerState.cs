@@ -50,7 +50,7 @@ namespace Characters.Pedestrians
         private void Move()
         {
             var position = _transform.position;
-            position += Direction * Time.deltaTime;
+            position += Direction * _moveSpeed *  Time.deltaTime;
             _transform.position = position;
         }
 

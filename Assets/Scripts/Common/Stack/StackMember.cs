@@ -24,7 +24,9 @@ public class StackMember : MonoBehaviour
     public virtual async UniTask MoveToPlace(Ease ease = Ease.OutQuart)
     {
         _cts = new CancellationTokenSource();
-        await transform.DOMove(StackPosition, _moveTime).SetEase(ease).WithCancellation(_cts.Token);
+        var moveTask = transform.DOMove(StackPosition, _moveTime).SetEase(ease).WithCancellation(_cts.Token);
+        var rotateTask = transform.DORotate(HorizontalStack.Instance.transform.rotation.eulerAngles, _moveTime).WithCancellation(_cts.Token);
+        await UniTask.WhenAll(moveTask, rotateTask);
     }
 
     public virtual async UniTask AddSelf(bool moveImmediately = false)

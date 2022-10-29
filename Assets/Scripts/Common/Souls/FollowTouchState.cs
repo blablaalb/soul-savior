@@ -6,7 +6,9 @@ namespace Common.Souls
     public class FollowTouchState : ISoulState
     {
         [SerializeField]
-        private float _speed;
+        private float _xSpeed;
+        [SerializeField]
+        private float _yzSpeed;
         private Transform _body;
         private Transform _transform;
         private Soul _soul;
@@ -39,9 +41,9 @@ namespace Common.Souls
 
         public void OnUpdate()
         {
-            var xSpeed = DirectionNormalized.x * _speed * Time.deltaTime;
-            var ySpeed = -(DirectionNormalized.y * _speed * Time.deltaTime);
-            var zSpeed = -(DirectionNormalized.y * _speed * Time.deltaTime);
+            var xSpeed = DirectionNormalized.x * _xSpeed * Time.deltaTime;
+            var ySpeed = -(DirectionNormalized.y * _yzSpeed * Time.deltaTime);
+            var zSpeed = -(DirectionNormalized.y * _yzSpeed * Time.deltaTime);
 
             var zyDirection = new Vector2(_body.position.z, _body.position.y) - new Vector2(_transform.position.z, _transform.position.y);
             zyDirection.Normalize();

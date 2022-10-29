@@ -35,8 +35,10 @@ namespace Common.Souls
 
         public void MoveToPLaceInStack()
         {
+#pragma warning disable CS0252
             if (_currentState != _movingInsideStackState)
                 EnterState(_movingInsideStackState);
+#pragma warning restore CS0252
         }
 
         public void AddToStack()

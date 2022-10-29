@@ -20,7 +20,7 @@ namespace Characters.Pedestrians
             var model = models[indx];
             model.transform.SetParent(this.transform);
             model.transform.localPosition = Vector3.zero;
-            model.transform.rotation = Quaternion.identity;
+            model.transform.localRotation = Quaternion.identity;
             model.gameObject.SetActive(true);
             return model;
         }
