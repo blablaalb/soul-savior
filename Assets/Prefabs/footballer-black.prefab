@@ -155,7 +155,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020335155809745686}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2.9876556, z: 1}
@@ -190,7 +190,8 @@ MonoBehaviour:
     _elevetationHeight: 3
     _elevationTime: 1
   _follorTouchState:
-    _speed: 7
+    _xSpeed: 5
+    _yzSpeed: 15
 --- !u!1001 &1020335156502299719
 PrefabInstance:
   m_ObjectHideFlags: 0

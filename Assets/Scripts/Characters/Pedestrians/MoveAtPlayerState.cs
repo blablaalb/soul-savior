@@ -1,3 +1,4 @@
+using Common;
 using UnityEngine;
 
 namespace Characters.Pedestrians
@@ -16,6 +17,8 @@ namespace Characters.Pedestrians
         [SerializeField]
         private float _stopDistance;
         private PedestrianAnimations _animations;
+        private Vector3 _target;
+        private Rigidbody _rigidBody;
 
         public string StateName => "Move at Player";
 
@@ -24,11 +27,13 @@ namespace Characters.Pedestrians
             _transform = transform;
             _player = player;
             _animations = animations;
+            _rigidBody = _transform.GetComponent<Rigidbody>();
         }
 
         public void Enter()
         {
             _animations.Walk();
+            _target = _player.transform.position;
         }
 
         public void Exit()
@@ -41,17 +46,20 @@ namespace Characters.Pedestrians
 
         public void OnUpdate()
         {
+            Look();
             if (Angle <= _lookAngleThreshold)
                 if (Distance >= _stopDistance)
                     Move();
-            Look();
+                else
+                {
+                    _rigidBody.velocity= Vector3.zero;
+                }
         }
 
         private void Move()
         {
-            var position = _transform.position;
-            position += Direction * _moveSpeed *  Time.deltaTime;
-            _transform.position = position;
+            var velocity = Direction * _moveSpeed * Time.deltaTime;
+            _rigidBody.velocity = velocity;
         }
 
         private void Look()
@@ -62,8 +70,8 @@ namespace Characters.Pedestrians
         }
 
         private float Angle => Vector3.Angle(_transform.forward, Direction);
-        private Vector3 Direction => _player.transform.position - _transform.position;
-        private float Distance => Vector3.Distance(_player.transform.position, _transform.position);
+        private Vector3 Direction => _target - _transform.position;
+        private float Distance => Vector3.Distance(_target, _transform.position);
 
     }
 }
