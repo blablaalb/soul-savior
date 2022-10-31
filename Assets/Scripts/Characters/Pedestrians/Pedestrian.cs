@@ -45,7 +45,7 @@ namespace Characters.Pedestrians
             Idle();
         }
 
-        public void IncorrectMatchFeedbackState()
+        public void IncorrectMatchFeedback()
         {
             if (_currentState != _incorrectMatchFeedbackState) EnterState(_incorrectMatchFeedbackState);
         }

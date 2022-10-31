@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
@@ -6,6 +7,9 @@ using System.Threading;
 using Common;
 using PER.Common.FSM;
 using Characters.Pedestrians;
+using Excessives;
+using Excessives.LinqE;
+using Excessives.Unity;
 
 namespace Common.Souls
 {
@@ -27,10 +31,12 @@ namespace Common.Souls
         private Pedestrian _pedestrian;
         [SerializeField]
         private float _matchDistanceThreshold;
+        private Collider _collider;
 
 
         internal void Awake()
         {
+            _collider = GetComponent<Collider>();
             _body = GetComponentInParent<SoulAndBody>().Body.transform;
             _stackMember = GetComponent<StackMember>();
             _addToStackState.Initialize(this.transform);
@@ -93,7 +99,10 @@ namespace Common.Souls
             else
             {
                 ReturnToStack();
-                // TODO: funny feedback
+                if (OverlappingPedestrian() is Pedestrian p)
+                {
+                    p.IncorrectMatchFeedback();
+                }
             }
         }
 
@@ -101,6 +110,19 @@ namespace Common.Souls
         {
             var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
             return distance <= _matchDistanceThreshold;
+        }
+
+        private Pedestrian OverlappingPedestrian()
+        {
+            var pedestrians = FindObjectsOfType<Pedestrian>().Where(p => p != _pedestrian);
+            foreach (var p in pedestrians)
+            {
+                if (_collider.bounds.Contains(p.transform.position))
+                {
+                    return p;
+                }
+            }
+            return null;
         }
 
 

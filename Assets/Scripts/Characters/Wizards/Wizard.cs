@@ -37,7 +37,7 @@ namespace Characters.Wizards
 
         internal void Start()
         {
-            Idle();
+            TakeSouls(FindObjectsOfType<Pedestrian>());
         }
 
         public void TakeNextSoul()
@@ -53,7 +53,13 @@ namespace Characters.Wizards
 
         public void TakeSoul(Pedestrian pedestrian)
         {
-            _takeSoulState.Pedestrian = pedestrian;
+            _takeSoulState.Pedestrians = new[] { pedestrian };
+            if (_currentState != _takeSoulState) EnterState(_takeSoulState);
+        }
+
+        public void TakeSouls(Pedestrian[] pedestrian)
+        {
+            _takeSoulState.Pedestrians = pedestrian;
             if (_currentState != _takeSoulState) EnterState(_takeSoulState);
         }
 
