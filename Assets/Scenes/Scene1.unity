@@ -260,17 +260,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: nerd-brown
       objectReference: {fileID: 0}
-    - target: {fileID: 2449216509355113381, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
-      propertyPath: m_IsTrigger
+    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
+      propertyPath: _matchDistanceThreshold
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
-      propertyPath: _follorTouchState._xSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747929399356959575, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
-      propertyPath: _follorTouchState._yzSpeed
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889a54980ec7b874b91bfb0edf427c16, type: 3}
@@ -700,14 +692,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730236795}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.3, y: 0, z: 7.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1514840342}
   m_Father: {fileID: 406300717}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!136 &730236797
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -751,12 +743,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 25
+    _moveSpeed: 0.1
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
   _soulBeingTakenState:
     _duration: 3
+  _incorrectMatchFeedbackState:
+    _duration: 2
 --- !u!1 &918028767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,12 +1193,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
     - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
-      propertyPath: _follorTouchState._xSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990689731043466348, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
-      propertyPath: _follorTouchState._yzSpeed
-      value: 15
+      propertyPath: _matchDistanceThreshold
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4045649882215058337, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
       propertyPath: m_Name
@@ -1253,10 +1243,6 @@ PrefabInstance:
     - target: {fileID: 4045649882215058338, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4263002332127251847, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e50124159f05734bbc8bac96029aa50, type: 3}
@@ -1317,15 +1303,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
     - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
-      propertyPath: _follorTouchState._xSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7800276610418347799, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
-      propertyPath: _follorTouchState._yzSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046261049522754080, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
-      propertyPath: m_IsTrigger
+      propertyPath: _matchDistanceThreshold
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8046261050159570648, guid: a3465d0cd89d4924ca1abdbc587be60b, type: 3}
@@ -1486,14 +1464,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394458069}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.57, y: 0, z: 0.76}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -2.77, y: 0, z: 8.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1013000388}
   m_Father: {fileID: 406300717}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1394458071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,12 +1485,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 25
+    _moveSpeed: 0.1
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
   _soulBeingTakenState:
     _duration: 3
+  _incorrectMatchFeedbackState:
+    _duration: 2
 --- !u!136 &1394458072
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1722,14 +1702,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580421920}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.11, y: 0, z: 0.76}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 2.7, y: 0, z: 4.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 918028768}
   m_Father: {fileID: 406300717}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!136 &1580421922
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1773,12 +1753,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 25
+    _moveSpeed: 0.1
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
   _soulBeingTakenState:
     _duration: 3
+  _incorrectMatchFeedbackState:
+    _duration: 2
 --- !u!1 &1619693114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,10 +2122,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353252885}
     m_Modifications:
-    - target: {fileID: 1020335155809648113, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1020335157609948443, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2193,12 +2171,8 @@ PrefabInstance:
       value: footballer-black
       objectReference: {fileID: 0}
     - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
-      propertyPath: _follorTouchState._xSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359360078085899241, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}
-      propertyPath: _follorTouchState._yzSpeed
-      value: 15
+      propertyPath: _matchDistanceThreshold
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e5017fff2f88f4e86419e016472bd2, type: 3}

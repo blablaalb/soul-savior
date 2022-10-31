@@ -16,6 +16,10 @@ namespace Characters.Pedestrians
         private IdleState _idleState;
         [SerializeField]
         private SoulBeingTakenState _soulBeingTakenState;
+        [SerializeField]
+        private SoulReturnedState _soulReturnedState;
+        [SerializeField]
+        private IncorrectMatchFeedbackState _incorrectMatchFeedbackState;
         private Player _player;
         private SoulAndBody _soulAndBody;
 
@@ -31,7 +35,9 @@ namespace Characters.Pedestrians
             var animations = GetComponentInChildren<PedestrianAnimations>();
             _moveAtPlayerState.Initialize(this.transform, _player, animations);
             _idleState.Initialize(animations);
+            _soulReturnedState.Initialize(animations);
             _soulBeingTakenState.Initialize(animations, _soulAndBody, this.transform);
+            _incorrectMatchFeedbackState.Initialize(animations, this);
         }
 
         internal void Start()
@@ -39,6 +45,15 @@ namespace Characters.Pedestrians
             Idle();
         }
 
+        public void IncorrectMatchFeedbackState()
+        {
+            if (_currentState != _incorrectMatchFeedbackState) EnterState(_incorrectMatchFeedbackState);
+        }
+
+        public void SoulReturned()
+        {
+            if (_currentState != _soulReturnedState) EnterState(_soulReturnedState);
+        }
         public void Idle()
         {
             if (_currentState != _idleState) EnterState(_idleState);

@@ -40,9 +40,7 @@ namespace Common.Inputs
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                _lastPointerPosition = null;
-                _soul?.ReturnToStack();
-                _soul = null;
+                OnTouchEnded();
             }
         }
 
@@ -57,6 +55,14 @@ namespace Common.Inputs
             delta.x = Mathf.Clamp(delta.x, -1, 1);
             delta.y = Mathf.Clamp(delta.y, -1, 1);
             return delta;
+        }
+
+        private void OnTouchEnded()
+        {
+            _soul?.OnDragEnded();
+
+            _lastPointerPosition = null;
+            _soul = null;
         }
 
 

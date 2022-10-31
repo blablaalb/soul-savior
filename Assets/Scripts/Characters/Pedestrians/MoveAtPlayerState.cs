@@ -38,27 +38,28 @@ namespace Characters.Pedestrians
 
         public void Exit()
         {
+            _rigidBody.velocity = Vector3.zero;
         }
 
         public void OnFixedUpdate()
         {
-        }
-
-        public void OnUpdate()
-        {
-            Look();
             if (Angle <= _lookAngleThreshold)
                 if (Distance >= _stopDistance)
                     Move();
                 else
                 {
-                    _rigidBody.velocity= Vector3.zero;
+                    _rigidBody.velocity = Vector3.zero;
                 }
+        }
+
+        public void OnUpdate()
+        {
+            Look();
         }
 
         private void Move()
         {
-            var velocity = Direction * _moveSpeed * Time.deltaTime;
+            var velocity = Direction * _moveSpeed;
             _rigidBody.velocity = velocity;
         }
 

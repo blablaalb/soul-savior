@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using Common;
 using PER.Common.FSM;
+using Characters.Pedestrians;
 
 namespace Common.Souls
 {
@@ -21,6 +22,11 @@ namespace Common.Souls
         [SerializeField]
         private InsideStackState _insideStackState;
         private MovingInsideStackState _movingInsideStackState;
+        [SerializeField]
+        private DisappearState _disappearState;
+        private Pedestrian _pedestrian;
+        [SerializeField]
+        private float _matchDistanceThreshold;
 
 
         internal void Awake()
@@ -31,7 +37,10 @@ namespace Common.Souls
             _follorTouchState.Initialize(this, _body);
             _returnToStackState.Initialize(_stackMember);
             _movingInsideStackState = GetComponent<MovingInsideStackState>();
+            _pedestrian = GetComponentInParent<Pedestrian>();
+            _disappearState.Initialize(this.transform);
         }
+
 
         public void MoveToPLaceInStack()
         {
@@ -64,10 +73,36 @@ namespace Common.Souls
             if (_currentState != _insideStackState) EnterState(_insideStackState);
         }
 
+        public void Disappear()
+        {
+            if (_currentState != _disappearState) EnterState(_disappearState);
+        }
+
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
         }
+
+        public void OnDragEnded()
+        {
+            if (SoulMatched())
+            {
+                _pedestrian.SoulReturned();
+                Disappear();
+            }
+            else
+            {
+                ReturnToStack();
+                // TODO: funny feedback
+            }
+        }
+
+        private bool SoulMatched()
+        {
+            var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
+            return distance <= _matchDistanceThreshold;
+        }
+
 
 #if UNITY_EDITOR
         [NaughtyAttributes.Button]

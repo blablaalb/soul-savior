@@ -24,8 +24,7 @@ namespace Common.Inputs
                         break;
                     case TouchPhase.Ended:
                     case TouchPhase.Canceled:
-                        _soul?.ReturnToStack();
-                        _soul = null;
+                        OnTouchEnded(touch);
                         break;
                 }
 
@@ -49,6 +48,12 @@ namespace Common.Inputs
                 }
 
             }
+        }
+
+        private void OnTouchEnded(Touch touch)
+        {
+            _soul?.OnDragEnded();
+            _soul = null;
         }
 
 

@@ -23,5 +23,15 @@ namespace Characters.Pedestrians
             Animator.CrossFade("being-possessed", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 
+        public void Dance1()
+        {
+            Animator.CrossFade("Dance1", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+        }
+
+        public void IncorrectMatchFeedback()
+        {
+            Animator.CrossFade("person-feedback", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+        }
+
     }
 }
