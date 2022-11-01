@@ -38,7 +38,7 @@ namespace Characters.Pedestrians
             var animations = GetComponentInChildren<PedestrianAnimations>();
             _moveAtPlayerState.Initialize(this.transform, _player, animations);
             _idleState.Initialize(animations);
-            _soulReturnedState.Initialize(animations);
+            _soulReturnedState.Initialize(animations, this.transform);
             _soulBeingTakenState.Initialize(animations, _soulAndBody, this.transform);
             _incorrectMatchFeedbackState.Initialize(animations, this);
             _attackState.Initialize(animations, _player, rigidbody);

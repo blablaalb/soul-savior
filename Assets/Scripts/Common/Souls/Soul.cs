@@ -102,6 +102,7 @@ namespace Common.Souls
                 if (OverlappingPedestrian() is Pedestrian p)
                 {
                     p.IncorrectMatchFeedback();
+                    Handheld.Vibrate();
                 }
             }
         }
