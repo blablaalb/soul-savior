@@ -24,6 +24,11 @@ public class HorizontalStack : MonoBehaviour
             await stackMember.MoveToPlace();
     }
 
+    public virtual void Remove(StackMember stackMember)
+    {
+        _stackMembers.Remove(stackMember);
+    }
+
     protected Vector3 CalculatePosition(int index)
     {
         var stackMember = _stackMembers[index];

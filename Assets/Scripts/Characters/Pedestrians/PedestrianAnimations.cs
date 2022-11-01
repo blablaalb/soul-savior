@@ -29,7 +29,7 @@ namespace Characters.Pedestrians
 
         public void Dance1()
         {
-            Animator.CrossFade("Dance1", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+            Animator.CrossFade("Dance1", normalizedTransitionDuration: 0.3f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 
         public void IncorrectMatchFeedback()

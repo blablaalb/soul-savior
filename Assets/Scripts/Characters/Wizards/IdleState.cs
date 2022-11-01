@@ -30,7 +30,7 @@ namespace Characters.Wizards
         public async void Enter()
         {
             _animations.Idle();
-            var direction = _transform.position - new Vector3(_player.transform.position.x, _transform.position.y, _player.transform.position.z);
+            var direction = new Vector3(_player.transform.position.x, _transform.position.y, _player.transform.position.z) - _transform.position;
             await _transform.DORotate(Quaternion.LookRotation(direction).eulerAngles, _rotateTime);
             await UniTask.Delay(TimeSpan.FromSeconds(_idleTime));
             if (_wizard.TakenSouls < _wizard.TotalSould)

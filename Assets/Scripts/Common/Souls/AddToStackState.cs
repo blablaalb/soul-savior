@@ -33,7 +33,7 @@ namespace Common.Souls
             _transform.gameObject.SetActive(true);
             _cts = new CancellationTokenSource();
             _transform.parent = null;
-            await _transform.DOMoveY(_elevetationHeight, _elevationTime).WithCancellation(_cts.Token);
+            await _transform.DOMoveY(_transform.position.y + _elevetationHeight, _elevationTime).WithCancellation(_cts.Token);
             await _stackMember.AddSelf(true);
             _soul.InsideStack();
         }

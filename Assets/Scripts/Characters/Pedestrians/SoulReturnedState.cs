@@ -5,6 +5,7 @@ using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using Excessives.LinqE;
+using Managers;
 
 namespace Characters.Pedestrians
 {
@@ -36,6 +37,7 @@ namespace Characters.Pedestrians
             await Fadeout();
             _transform.gameObject.SetActive(false);
             RestoreFade();
+            LevelManager.Instance.OnSoulReturned();
         }
 
         private void DeactivateColliders()

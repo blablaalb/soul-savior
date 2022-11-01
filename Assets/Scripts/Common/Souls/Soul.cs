@@ -94,6 +94,7 @@ namespace Common.Souls
             if (SoulMatched())
             {
                 _pedestrian.SoulReturned();
+                HorizontalStack.Instance.Remove(_stackMember);
                 Disappear();
             }
             else

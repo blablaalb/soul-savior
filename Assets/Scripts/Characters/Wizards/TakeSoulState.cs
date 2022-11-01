@@ -49,7 +49,7 @@ namespace Characters.Wizards
         public async void Enter()
         {
             var center = CenterOfVectors(Pedestrians.Select(x => x.transform.position).ToArray());
-            var rotationDirection = _transform.position - new Vector3(center.x, _transform.position.y, center.z);
+            var rotationDirection = new Vector3(center.x, _transform.position.y, center.z) - _transform.position;
             await _transform.DORotate(Quaternion.LookRotation(rotationDirection).eulerAngles, _rotateTime);
             _animations.TakingSoulBegan += OnTakingSoulBegan;
             _animations.TakeSoul();

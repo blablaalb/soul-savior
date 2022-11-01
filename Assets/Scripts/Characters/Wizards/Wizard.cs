@@ -20,6 +20,8 @@ namespace Characters.Wizards
         private TakeSoulState _takeSoulState;
         [SerializeField]
         private IdleState _idleState;
+        [SerializeField]
+        private GoToIslandState _goToIsland;
 
         public int TotalSould { get; private set; }
         public int TakenSouls { get; private set; }
@@ -33,11 +35,23 @@ namespace Characters.Wizards
             TotalSould = _pedestrians.Count;
             _takeSoulState.Initialize(this, _animations, this.transform);
             _idleState.Initialize(_animations, this, _player);
+            _goToIsland.Initialize(this.transform, this, _animations);
         }
 
-        internal void Start()
+        internal async void Start()
         {
-            TakeSouls(FindObjectsOfType<Pedestrian>());
+            await UniTask.Delay(TimeSpan.FromSeconds(_startTakingSoulsDelay));
+            TakeAvailableSouls();
+        }
+
+        public void GoToIsland(Island island)
+        {
+            if (_currentState != _goToIsland)
+            {
+                _goToIsland.JumpFromPosition = island.WizardJumpPosition.position;
+                _goToIsland.JumpToPosition = island.WizardLandPosition.position;
+                EnterState(_goToIsland);
+            }
         }
 
         public void TakeNextSoul()
@@ -61,6 +75,11 @@ namespace Characters.Wizards
         {
             _takeSoulState.Pedestrians = pedestrian;
             if (_currentState != _takeSoulState) EnterState(_takeSoulState);
+        }
+
+        public void TakeAvailableSouls()
+        {
+            TakeSouls(FindObjectsOfType<Pedestrian>());
         }
 
         public void Idle()

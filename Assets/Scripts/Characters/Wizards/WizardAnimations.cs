@@ -24,9 +24,26 @@ namespace Characters.Wizards
             _animator.CrossFade("Attack02Start", 0.1f, 0, 0);
         }
 
+        public void Move()
+        {
+            _animator.CrossFade("WalkForward", 0.5f, 0, 0f);
+        }
+
+        public void Jump()
+        {
+            _animator.CrossFade("Jump", 0.5f, 0, 0f);
+        }
+
+        public void Land()
+        {
+            _animator.CrossFade("JumpEnd", 0.5f, 0, 0f);
+        }
+
         public void OnTakingSoulBegan()
         {
             TakingSoulBegan?.Invoke();
         }
+
+
     }
 }
