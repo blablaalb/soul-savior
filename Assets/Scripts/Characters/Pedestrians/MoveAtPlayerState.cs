@@ -19,6 +19,7 @@ namespace Characters.Pedestrians
         private PedestrianAnimations _animations;
         private Vector3 _target;
         private Rigidbody _rigidBody;
+        private Pedestrian _pedestrian;
 
         public string StateName => "Move at Player";
 
@@ -28,6 +29,7 @@ namespace Characters.Pedestrians
             _player = player;
             _animations = animations;
             _rigidBody = _transform.GetComponent<Rigidbody>();
+            _pedestrian = transform.GetComponent<Pedestrian>();
         }
 
         public void Enter()
@@ -49,6 +51,7 @@ namespace Characters.Pedestrians
                 else
                 {
                     _rigidBody.velocity = Vector3.zero;
+                    _pedestrian.Attack();
                 }
         }
 

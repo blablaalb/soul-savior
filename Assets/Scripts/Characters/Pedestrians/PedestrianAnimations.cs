@@ -7,6 +7,10 @@ namespace Characters.Pedestrians
         private Animator _animator;
         private Animator Animator => _animator ??= GetComponentInChildren<Animator>(true);
 
+        public void Attack()
+        {
+            Animator.CrossFade("Punch1", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+        }
 
         public void Walk()
         {

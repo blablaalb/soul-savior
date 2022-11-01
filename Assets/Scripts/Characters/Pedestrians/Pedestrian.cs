@@ -20,6 +20,8 @@ namespace Characters.Pedestrians
         private SoulReturnedState _soulReturnedState;
         [SerializeField]
         private IncorrectMatchFeedbackState _incorrectMatchFeedbackState;
+        [SerializeField]
+        private AttackState _attackState;
         private Player _player;
         private SoulAndBody _soulAndBody;
 
@@ -27,6 +29,7 @@ namespace Characters.Pedestrians
 
         internal void Awake()
         {
+            var rigidbody = GetComponent<Rigidbody>();
             var _modelInstantiator = GetComponentInChildren<ModelInstantiator>();
             var model = _modelInstantiator.Random();
             model.Soul.SetActive(false);
@@ -38,11 +41,17 @@ namespace Characters.Pedestrians
             _soulReturnedState.Initialize(animations);
             _soulBeingTakenState.Initialize(animations, _soulAndBody, this.transform);
             _incorrectMatchFeedbackState.Initialize(animations, this);
+            _attackState.Initialize(animations, _player, rigidbody);
         }
 
         internal void Start()
         {
             Idle();
+        }
+
+        public void Attack()
+        {
+            if (_currentState != _attackState) EnterState(_attackState);
         }
 
         public void IncorrectMatchFeedback()
