@@ -7,6 +7,13 @@ namespace Common.Inputs
     public class TouchInput : Singleton<TouchInput>
     {
         private Soul _soul;
+        private Hands _hands;
+
+        override protected void Awake()
+        {
+            base.Awake();
+            _hands = FindObjectOfType<Hands>();
+        }
 
         internal void Update()
         {
@@ -32,7 +39,10 @@ namespace Common.Inputs
                 delta.x = Mathf.Clamp(delta.x, -1, 1);
                 delta.y = Mathf.Clamp(delta.y, -1, 1);
                 if (_soul != null)
+                {
                     _soul.FollowTouch(delta);
+                    _hands.FollowScreenPoint(touch.position);
+                }
             }
         }
 
