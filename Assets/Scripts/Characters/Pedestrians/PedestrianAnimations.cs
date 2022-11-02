@@ -14,7 +14,7 @@ namespace Characters.Pedestrians
 
         public void Walk()
         {
-            Animator.CrossFade("Walk", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+            Animator.CrossFade("Walk", normalizedTransitionDuration: .3f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 
         public void Idle()

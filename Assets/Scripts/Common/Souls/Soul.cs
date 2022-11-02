@@ -91,7 +91,8 @@ namespace Common.Souls
 
         public void OnDragEnded()
         {
-            if (SoulMatched())
+            var closestPedestrian = ClosestPedestrian();
+            if (closestPedestrian == _pedestrian && Vector3.Distance(_pedestrian.transform.position, transform.position) <= _matchDistanceThreshold)
             {
                 _pedestrian.SoulReturned();
                 HorizontalStack.Instance.Remove(_stackMember);
@@ -100,33 +101,23 @@ namespace Common.Souls
             else
             {
                 ReturnToStack();
-                if (OverlappingPedestrian() is Pedestrian p)
-                {
-                    p.IncorrectMatchFeedback();
-                    Handheld.Vibrate();
-                }
+                closestPedestrian.IncorrectMatchFeedback();
+                Handheld.Vibrate();
             }
         }
 
-        private bool SoulMatched()
+        private Pedestrian ClosestPedestrian()
         {
-            var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
-            return distance <= _matchDistanceThreshold;
-        }
+            Pedestrian pedestrian = null;
 
-        private Pedestrian OverlappingPedestrian()
-        {
-            var pedestrians = FindObjectsOfType<Pedestrian>().Where(p => p != _pedestrian);
-            foreach (var p in pedestrians)
-            {
-                if (_collider.bounds.Contains(p.transform.position))
-                {
-                    return p;
-                }
-            }
-            return null;
-        }
+            var allPedestrains = FindObjectsOfType<Pedestrian>();
+            pedestrian = allPedestrains.OrderBy(x =>
+                Vector3.Distance(x.transform.position, transform.position)
+            ).First();
 
+
+            return pedestrian;
+        }
 
 #if UNITY_EDITOR
         [NaughtyAttributes.Button]

@@ -5,6 +5,8 @@ namespace Common
     public class Hands : MonoBehaviour
     {
         private float _z;
+        [SerializeField]
+        private float _yOffset;
 
         internal void Awake()
         {
@@ -15,6 +17,7 @@ namespace Common
         {
             point.z = _z;
             var position = Camera.main.ScreenToWorldPoint(point);
+            position.y += _yOffset;
             transform.position = position;
         }
     }

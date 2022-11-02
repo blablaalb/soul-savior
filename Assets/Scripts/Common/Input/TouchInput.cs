@@ -50,7 +50,7 @@ namespace Common.Inputs
         {
             var ray = Camera.main.ScreenPointToRay(touch.position);
             RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo))
+            if (Physics.Raycast(ray, out hitInfo, float.MaxValue,  layerMask: LayerMask.GetMask("Ghost")))
             {
                 if (hitInfo.collider.GetComponent<Soul>() is Soul soul)
                 {
@@ -62,6 +62,7 @@ namespace Common.Inputs
 
         private void OnTouchEnded(Touch touch)
         {
+            Debug.Log($"Touch ended. Soul is {_soul}", _soul);
             _soul?.OnDragEnded();
             _soul = null;
         }

@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1020335156502699653}
-  - {fileID: 1020335155810035510}
+  - {fileID: 4710402218242618153}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59,12 +59,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9163464dd332d499aba8383cfdb6bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3811757624552202226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4710402218242618153}
+  - component: {fileID: 5450119806396871182}
+  - component: {fileID: 3200601387100401854}
+  - component: {fileID: 7821516664078769790}
+  m_Layer: 0
+  m_Name: SimpleCitizens_Footballer_Black GHOST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4710402218242618153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811757624552202226}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1020335155810035510}
+  m_Father: {fileID: 1020335157609948443}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5450119806396871182
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811757624552202226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.9876556, z: 1}
+  m_Center: {x: -0, y: 1.4254074, z: 0}
+--- !u!114 &3200601387100401854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811757624552202226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9032ff11bff6554ea0493a337276c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Width: 1
+  _moveTime: 2
+--- !u!114 &7821516664078769790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811757624552202226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e09aeea6e408c1449dc0127ffd28c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _addToStackState:
+    _elevetationHeight: 3
+    _elevationTime: 1
+  _follorTouchState:
+    _xSpeed: 5
+    _yzSpeed: 15
+  _matchDistanceThreshold: 0
 --- !u!1001 &1020335155809648116
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1020335157609948443}
+    m_TransformParent: {fileID: 4710402218242618153}
     m_Modifications:
     - target: {fileID: 100066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_Name
@@ -76,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96,15 +176,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -137,61 +217,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9500000, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
---- !u!1 &1020335155809745686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
-  m_PrefabInstance: {fileID: 1020335155809648116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1020335155810035510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400066, guid: 341ea50798161074b86aa34b091e19d8, type: 3}
   m_PrefabInstance: {fileID: 1020335155809648116}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1020335155809648113
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020335155809745686}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.9876556, z: 1}
-  m_Center: {x: -0, y: 1.4254074, z: 0}
---- !u!114 &874494336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020335155809745686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9032ff11bff6554ea0493a337276c30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Width: 1
-  _moveTime: 2
---- !u!114 &7359360078085899241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020335155809745686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e09aeea6e408c1449dc0127ffd28c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _addToStackState:
-    _elevetationHeight: 3
-    _elevationTime: 1
-  _follorTouchState:
-    _xSpeed: 5
-    _yzSpeed: 15
 --- !u!1001 &1020335156502299719
 PrefabInstance:
   m_ObjectHideFlags: 0
