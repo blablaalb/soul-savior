@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 0.1
+    _moveSpeed: 0.05
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 0.1
+    _moveSpeed: 0.05
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveAtPlayerState:
-    _moveSpeed: 0.1
+    _moveSpeed: 0.05
     _rotateSpeed: 2
     _lookAngleThreshold: 15
     _stopDistance: 3
@@ -999,3 +999,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84fcbc1773e872d4da7062f80df6cdd8, type: 3}
   m_PrefabInstance: {fileID: 122713200476700547}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6335728275701409964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2999696088258144465, guid: 84fcbc1773e872d4da7062f80df6cdd8, type: 3}
+  m_PrefabInstance: {fileID: 122713200476700547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &5099568819516329959
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335728275701409964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6678017239277870427, guid: 84fcbc1773e872d4da7062f80df6cdd8, type: 3}
