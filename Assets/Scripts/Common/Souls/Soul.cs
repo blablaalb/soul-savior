@@ -46,7 +46,7 @@ namespace Common.Souls
             _pedestrian = GetComponentInParent<Pedestrian>();
             _disappearState.Initialize(this.transform);
 
-            GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.materials).ForEach(m => m.shader = _shader);
+            SetShaderAndColor();
         }
 
 
@@ -126,6 +126,17 @@ namespace Common.Souls
 
 
             return pedestrian;
+        }
+
+        private void SetShaderAndColor()
+        {
+            GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.materials).ForEach(m =>
+            {
+                m.shader = _shader;
+                var color = new Color(.2f, .2f, .2f, 1f);
+                m.SetColor("_TintColor", color);
+            }
+            );
         }
 
 #if UNITY_EDITOR
