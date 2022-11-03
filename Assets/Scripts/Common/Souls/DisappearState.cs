@@ -18,7 +18,7 @@ namespace Common.Souls
         public void Initialize(Transform transform)
         {
             _transform = transform;
-            _materials = transform.GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.sharedMaterials).ToArray();
+            _materials = transform.GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.materials).ToArray();
         }
 
         public async void Enter()

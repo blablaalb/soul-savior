@@ -15,6 +15,8 @@ namespace Common.Souls
 {
     public class Soul : Context<ISoulState>
     {
+        [SerializeField]
+        private Shader _shader;
         private Transform _body;
         private StackMember _stackMember;
         [SerializeField]
@@ -31,12 +33,10 @@ namespace Common.Souls
         private Pedestrian _pedestrian;
         [SerializeField]
         private float _matchDistanceThreshold;
-        private Collider _collider;
 
 
         internal void Awake()
         {
-            _collider = GetComponent<Collider>();
             _body = GetComponentInParent<SoulAndBody>().Body.transform;
             _stackMember = GetComponent<StackMember>();
             _addToStackState.Initialize(this.transform);
@@ -45,6 +45,8 @@ namespace Common.Souls
             _movingInsideStackState = GetComponent<MovingInsideStackState>();
             _pedestrian = GetComponentInParent<Pedestrian>();
             _disappearState.Initialize(this.transform);
+
+            GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.materials).ForEach(m => m.shader = _shader);
         }
 
 
@@ -91,8 +93,8 @@ namespace Common.Souls
 
         public void OnDragEnded()
         {
-            var closestPedestrian = ClosestPedestrian();
-            if (closestPedestrian == _pedestrian && Vector3.Distance(_pedestrian.transform.position, transform.position) <= _matchDistanceThreshold)
+            Pedestrian closestPedestrian;
+            if (SoulMatched(out closestPedestrian))
             {
                 _pedestrian.SoulReturned();
                 HorizontalStack.Instance.Remove(_stackMember);
@@ -104,6 +106,13 @@ namespace Common.Souls
                 closestPedestrian.IncorrectMatchFeedback();
                 Handheld.Vibrate();
             }
+        }
+
+        private bool SoulMatched(out Pedestrian closestPedestrian)
+        {
+            closestPedestrian = ClosestPedestrian();
+            var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
+            return distance <= _matchDistanceThreshold;
         }
 
         private Pedestrian ClosestPedestrian()

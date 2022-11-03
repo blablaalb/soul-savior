@@ -25,7 +25,7 @@ namespace Characters.Pedestrians
         {
             _animations = animations;
             _transform = transform;
-            _materials = _transform.GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.sharedMaterials).ToArray();
+            _materials = _transform.GetComponentsInChildren<SkinnedMeshRenderer>().SelectMany(x => x.materials).ToArray();
             _colliders = _transform.GetComponentsInChildren<Collider>();
         }
 
