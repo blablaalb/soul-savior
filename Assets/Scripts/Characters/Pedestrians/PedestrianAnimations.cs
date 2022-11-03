@@ -12,8 +12,9 @@ namespace Characters.Pedestrians
             Animator.CrossFade("Punch1", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 
-        public void Walk()
+        public void Walk(float speed = 1f)
         {
+            Animator.SetFloat("walk-speed", speed);
             Animator.CrossFade("Walk", normalizedTransitionDuration: .3f, layer: 0, normalizedTimeOffset: 0.1f);
         }
 

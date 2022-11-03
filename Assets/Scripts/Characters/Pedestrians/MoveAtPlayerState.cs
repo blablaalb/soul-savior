@@ -8,8 +8,9 @@ namespace Characters.Pedestrians
     {
         private Player _player;
         private Transform _transform;
-        [SerializeField]
         private float _moveSpeed;
+        [SerializeField]
+        private float _defaultMoveSpeed = 0.05f;
         [SerializeField]
         private float _rotateSpeed;
         [SerializeField]
@@ -22,6 +23,15 @@ namespace Characters.Pedestrians
         private Pedestrian _pedestrian;
 
         public string StateName => "Move at Player";
+        public float MoveSpeed
+        {
+            get { return _moveSpeed; }
+            set
+            {
+                _moveSpeed = value;
+            }
+        }
+        public float RotateSpeed { get { return _rotateSpeed; } set { _rotateSpeed = value; } }
 
         public void Initialize(Transform transform, Player player, PedestrianAnimations animations)
         {
@@ -30,11 +40,12 @@ namespace Characters.Pedestrians
             _animations = animations;
             _rigidBody = _transform.GetComponent<Rigidbody>();
             _pedestrian = transform.GetComponent<Pedestrian>();
+            _moveSpeed = _defaultMoveSpeed;
         }
 
         public void Enter()
         {
-            _animations.Walk();
+            _animations.Walk( _moveSpeed / _defaultMoveSpeed );
             _target = _player.transform.position;
         }
 

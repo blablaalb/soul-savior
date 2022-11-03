@@ -78,5 +78,11 @@ namespace Characters.Pedestrians
             if (_currentState != _soulBeingTakenState) EnterState(_soulBeingTakenState);
         }
 
+        public void OnSoulMismatched()
+        {
+            IncorrectMatchFeedback();
+            _moveAtPlayerState.MoveSpeed += _moveAtPlayerState.MoveSpeed * 0.5f;
+        }
+
     }
 }

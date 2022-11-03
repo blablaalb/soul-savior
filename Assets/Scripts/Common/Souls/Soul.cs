@@ -103,7 +103,7 @@ namespace Common.Souls
             else
             {
                 ReturnToStack();
-                closestPedestrian.IncorrectMatchFeedback();
+                closestPedestrian.OnSoulMismatched();
                 Handheld.Vibrate();
             }
         }
