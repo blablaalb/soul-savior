@@ -2,6 +2,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
+using Characters.Players;
 
 namespace Characters.Wizards
 {

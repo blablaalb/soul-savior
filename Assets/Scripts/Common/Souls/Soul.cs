@@ -103,8 +103,11 @@ namespace Common.Souls
             else
             {
                 ReturnToStack();
-                closestPedestrian.OnSoulMismatched();
-                Handheld.Vibrate();
+                if (closestPedestrian != _pedestrian)
+                {
+                    closestPedestrian.OnSoulMismatched();
+                    Handheld.Vibrate();
+                }
             }
         }
 
@@ -112,7 +115,7 @@ namespace Common.Souls
         {
             closestPedestrian = ClosestPedestrian();
             var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
-            return distance <= _matchDistanceThreshold;
+            return distance <= _matchDistanceThreshold && closestPedestrian == _pedestrian;
         }
 
         private Pedestrian ClosestPedestrian()

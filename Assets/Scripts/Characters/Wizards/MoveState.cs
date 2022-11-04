@@ -42,7 +42,7 @@ namespace Characters.Wizards
             var to = Position;
             to.y = from.y;
             var direction = to - from;
-            await _transform.DORotate(Quaternion.Euler(direction).eulerAngles, _rotateTime).WithCancellation(_cts.Token);
+            await _transform.DORotateQuaternion(Quaternion.LookRotation(direction), _rotateTime).WithCancellation(_cts.Token);
         }
 
         protected async UniTask Move()

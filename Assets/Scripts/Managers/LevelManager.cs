@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using PER.Common;
 using UnityEngine;
 using Characters.Wizards;
+using Characters.Players;
 
 namespace Managers
 {

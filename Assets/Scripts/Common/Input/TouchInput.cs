@@ -1,3 +1,4 @@
+using Characters.Players;
 using Common.Souls;
 using PER.Common;
 using UnityEngine;
@@ -62,9 +63,9 @@ namespace Common.Inputs
 
         private void OnTouchEnded(Touch touch)
         {
-            Debug.Log($"Touch ended. Soul is {_soul}", _soul);
             _soul?.OnDragEnded();
             _soul = null;
+            _hands.DefaultPosition();
         }
 
 

@@ -31,7 +31,7 @@ namespace Characters.Wizards
 
         public void Jump()
         {
-            _animator.CrossFade("Jump", 0.5f, 0, 0f);
+            _animator.CrossFade("JumpStart", 0.5f, 0, 0f);
         }
 
         public void Land()

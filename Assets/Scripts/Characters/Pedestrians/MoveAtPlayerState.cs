@@ -1,5 +1,6 @@
 using Common;
 using UnityEngine;
+using Characters.Players;
 
 namespace Characters.Pedestrians
 {

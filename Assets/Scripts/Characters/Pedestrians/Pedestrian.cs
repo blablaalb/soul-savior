@@ -5,6 +5,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Common;
 using Common.Souls;
+using Characters.Players;
 
 namespace Characters.Pedestrians
 {

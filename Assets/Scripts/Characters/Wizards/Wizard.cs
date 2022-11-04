@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using Cysharp.Threading;
 using System;
 using PER.Common.FSM;
+using Characters.Players;
 
 namespace Characters.Wizards
 {
