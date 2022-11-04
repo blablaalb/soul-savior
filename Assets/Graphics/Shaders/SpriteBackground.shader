@@ -1,44 +1,62 @@
-Shader "Sprites/Background"
-{
-    Properties
-    {
-        [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-        _Color ("Tint", Color) = (1,1,1,1)
-        [MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
-        [HideInInspector] _RendererColor ("RendererColor", Color) = (1,1,1,1)
-        [HideInInspector] _Flip ("Flip", Vector) = (1,1,1,1)
-        [PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
-        [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
-    }
+Shader "Sprites/Background"{
+	Properties{
+		_Color ("Tint", Color) = (0, 0, 0, 1)
+		_MainTex ("Texture", 2D) = "white" {}
+	}
 
-    SubShader
-    {
-        Tags
-        {
-            "Queue"="Transparent"
-            "IgnoreProjector"="True"
-            "RenderType"="Transparent"
-            "PreviewType"="Plane"
-            "CanUseSpriteAtlas"="True"
-        }
+	SubShader{
+		Tags{ 
+			"RenderType"="Transparent" 
+			"Queue"="Background"
+		}
 
-        Cull Off
-        Lighting Off
-        ZWrite Off
-        Blend One OneMinusSrcAlpha
-        ZTest Off
+		Blend SrcAlpha OneMinusSrcAlpha
 
-        Pass
-        {
-        CGPROGRAM
-            #pragma vertex SpriteVert
-            #pragma fragment SpriteFrag
-            #pragma target 2.0
-            #pragma multi_compile_instancing
-            #pragma multi_compile_local _ PIXELSNAP_ON
-            #pragma multi_compile _ ETC1_EXTERNAL_ALPHA
-            #include "UnitySprites.cginc"
-        ENDCG
-        }
-    }
+		ZWrite off
+		Cull off
+
+		Pass{
+
+			CGPROGRAM
+
+			#include "UnityCG.cginc"
+
+			#pragma vertex vert
+			#pragma fragment frag
+
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
+
+			fixed4 _Color;
+
+			struct appdata{
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+				fixed4 color : COLOR;
+			};
+
+			struct v2f{
+				float4 position : SV_POSITION;
+				float2 uv : TEXCOORD0;
+				fixed4 color : COLOR;
+			};
+
+			v2f vert(appdata v){
+				v2f o;
+				o.position = UnityObjectToClipPos(v.vertex);
+				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				o.color = v.color;
+				return o;
+			}
+
+			fixed4 frag(v2f i) : SV_TARGET{
+				fixed4 col = tex2D(_MainTex, i.uv);
+				col *= _Color;
+				col *= i.color;
+				return col;
+			}
+
+			ENDCG
+		}
+	}
 }
