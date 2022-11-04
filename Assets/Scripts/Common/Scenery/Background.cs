@@ -5,19 +5,18 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     private Camera _camera;
-    private float _zOffset;
+    private Vector3 _offset;
 
     internal void Awake()
     {
         _camera = Camera.main;
-        _zOffset = Mathf.Abs(_camera.transform.position.z - transform.position.z);
+        _offset =  transform.position - _camera.transform.position;
     }
 
 
     internal void Update()
     {
-        var position = _camera.transform.position;
-        position.z += _zOffset;
+        var position = _camera.transform.position +_offset;
         transform.position = position;
     }
 }

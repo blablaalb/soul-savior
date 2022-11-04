@@ -10,6 +10,7 @@ using Characters.Pedestrians;
 using Excessives;
 using Excessives.LinqE;
 using Excessives.Unity;
+using Managers;
 
 namespace Common.Souls
 {
@@ -100,6 +101,7 @@ namespace Common.Souls
                 _pedestrian.SoulReturned();
                 HorizontalStack.Instance.Remove(_stackMember);
                 Disappear();
+                AudioManager.Instance.Success();
             }
             else
             {
