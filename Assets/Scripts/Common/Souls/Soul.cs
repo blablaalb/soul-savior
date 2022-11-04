@@ -94,7 +94,8 @@ namespace Common.Souls
         public void OnDragEnded()
         {
             Pedestrian closestPedestrian;
-            if (SoulMatched(out closestPedestrian))
+            float distance;
+            if (SoulMatched(out closestPedestrian, out distance))
             {
                 _pedestrian.SoulReturned();
                 HorizontalStack.Instance.Remove(_stackMember);
@@ -103,7 +104,7 @@ namespace Common.Souls
             else
             {
                 ReturnToStack();
-                if (closestPedestrian != _pedestrian)
+                if (closestPedestrian != _pedestrian && distance <= _matchDistanceThreshold )
                 {
                     closestPedestrian.OnSoulMismatched();
                     Handheld.Vibrate();
@@ -111,10 +112,10 @@ namespace Common.Souls
             }
         }
 
-        private bool SoulMatched(out Pedestrian closestPedestrian)
+        private bool SoulMatched(out Pedestrian closestPedestrian, out float distance)
         {
             closestPedestrian = ClosestPedestrian();
-            var distance = Vector3.Distance(_pedestrian.transform.position, transform.position);
+            distance = Vector3.Distance(closestPedestrian.transform.position, transform.position);
             return distance <= _matchDistanceThreshold && closestPedestrian == _pedestrian;
         }
 

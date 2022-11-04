@@ -14,6 +14,7 @@ public class Island : MonoBehaviour
     public Transform WizardLandPosition;
 
     public int PedestrianCount { get; private set; }
+    public int PedestrianSoulsMatched { get; set; }
     public static Island Active { get; private set; }
 
     internal void Awake()

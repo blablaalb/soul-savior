@@ -10,7 +10,7 @@ namespace Characters.Players
         [SerializeField]
         private float _yOffset;
         private Vector3 _defaultPositionLocal;
-        private Vector3 _targetPosition;
+        private Vector3? _targetPosition;
 
         internal void Awake()
         {
@@ -25,7 +25,10 @@ namespace Characters.Players
 
         internal void Update()
         {
-            transform.position = Interpolate(_targetPosition);
+            if (_targetPosition != null)
+                transform.position = Interpolate(_targetPosition.Value);
+            else
+                transform.position = Interpolate(transform.parent.TransformPoint(_defaultPositionLocal));
         }
 
         public void FollowScreenPoint(Vector3 point)
@@ -38,7 +41,7 @@ namespace Characters.Players
 
         public void DefaultPosition()
         {
-            _targetPosition = transform.parent.TransformPoint(_defaultPositionLocal);
+            _targetPosition = null;
         }
 
         private Vector3 Interpolate(Vector3 position)

@@ -6,6 +6,8 @@ using PER.Common;
 using UnityEngine;
 using Characters.Wizards;
 using Characters.Players;
+using Common.Souls;
+using Characters.Pedestrians;
 
 namespace Managers
 {
@@ -16,9 +18,13 @@ namespace Managers
         private int _returnedSouls;
         private Wizard _wizard;
         private Player _player;
+        private int _totalSouls;
+
+        public float Progress => (float)_returnedSouls / (float)_totalSouls;
 
         override protected void Awake()
         {
+            _totalSouls = FindObjectsOfType<Pedestrian>(true).Length;
             _wizard = FindObjectOfType<Wizard>();
             _player = FindObjectOfType<Player>();
             base.Awake();
@@ -50,14 +56,14 @@ namespace Managers
 
         private void OnIslandPassed()
         {
-            _returnedSouls = 0;
             NextIsland();
         }
 
         public void OnSoulReturned()
         {
             _returnedSouls++;
-            if (Island.Active.PedestrianCount <= _returnedSouls)
+            Island.Active.PedestrianSoulsMatched++;
+            if (Island.Active.PedestrianCount <= Island.Active.PedestrianSoulsMatched)
             {
                 OnIslandPassed();
             }

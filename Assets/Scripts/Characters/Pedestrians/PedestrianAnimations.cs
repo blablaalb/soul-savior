@@ -35,7 +35,7 @@ namespace Characters.Pedestrians
 
         public void IncorrectMatchFeedback()
         {
-            Animator.CrossFade("person-feedback", normalizedTransitionDuration: 1f, layer: 0, normalizedTimeOffset: 0.1f);
+            Animator.CrossFade("person-feedback", normalizedTransitionDuration: .1f, layer: 0, normalizedTimeOffset: 0f);
         }
 
     }
