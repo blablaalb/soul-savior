@@ -1,5 +1,6 @@
 using UnityEngine;
 using Characters.Players;
+using Managers;
 
 namespace Characters.Pedestrians
 {
@@ -22,7 +23,7 @@ namespace Characters.Pedestrians
         public void Enter()
         {
             _animations.Attack();
-            // TODO: OnPLayerHit()
+            GameManager.Instance.OnLost();
         }
 
         public void Exit()

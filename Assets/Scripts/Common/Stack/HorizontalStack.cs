@@ -52,5 +52,12 @@ public class HorizontalStack : MonoBehaviour
 #pragma warning restore CS4014
     }
 
+    internal void OnDestroy()
+    {
+        _instance = null;
+        _stackMembers = null;
+
+    }
+
 
 }

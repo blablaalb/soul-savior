@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Excessives.LinqE;
+using System.Threading;
 
 namespace Characters.Wizards
 {
@@ -19,6 +20,7 @@ namespace Characters.Wizards
         private Wizard _wizard;
         private Transform _transform;
         private WizardAnimations _animations;
+        private CancellationTokenSource _cts;
 
         public string StateName => "Take Soul";
         public ICollection<Pedestrian> Pedestrians { get; set; }
@@ -48,9 +50,11 @@ namespace Characters.Wizards
 
         public async void Enter()
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
             var center = CenterOfVectors(Pedestrians.Select(x => x.transform.position).ToArray());
             var rotationDirection = new Vector3(center.x, _transform.position.y, center.z) - _transform.position;
-            await _transform.DORotate(Quaternion.LookRotation(rotationDirection).eulerAngles, _rotateTime);
+            await _transform.DORotate(Quaternion.LookRotation(rotationDirection).eulerAngles, _rotateTime).WithCancellation(_cts.Token);
             _animations.TakingSoulBegan += OnTakingSoulBegan;
             _animations.TakeSoul();
         }
@@ -77,6 +81,7 @@ namespace Characters.Wizards
         {
             _animations.TakingSoulBegan -= OnTakingSoulBegan;
             Pedestrians = null;
+            _cts?.Cancel();
         }
 
         public void OnFixedUpdate()
@@ -86,6 +91,5 @@ namespace Characters.Wizards
         public void OnUpdate()
         {
         }
-
     }
 }

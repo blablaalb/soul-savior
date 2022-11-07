@@ -33,4 +33,11 @@ public class Island : MonoBehaviour
     {
         _pedestriansRoot.gameObject.SetActive(false);
     }
+
+    internal void OnDestroy()
+    {
+        if (Active == this)
+            Active = null;
+    }
+
 }

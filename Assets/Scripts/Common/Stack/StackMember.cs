@@ -40,4 +40,9 @@ public class StackMember : MonoBehaviour
     }
 
 
+    internal void OnDestroy()
+    {
+        _cts?.Cancel();
+    }
+
 }

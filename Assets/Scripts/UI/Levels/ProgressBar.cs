@@ -2,7 +2,7 @@ using Managers;
 using UnityEngine;
 using UI.Common;
 
-namespace UI.Level
+namespace UI.Levels
 {
     public class ProgressBar : MonoBehaviour
     {

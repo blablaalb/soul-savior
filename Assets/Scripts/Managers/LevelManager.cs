@@ -8,6 +8,8 @@ using Characters.Wizards;
 using Characters.Players;
 using Common.Souls;
 using Characters.Pedestrians;
+using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 namespace Managers
 {
@@ -21,9 +23,11 @@ namespace Managers
         private int _totalSouls;
 
         public float Progress => (float)_returnedSouls / (float)_totalSouls;
+        public int Level {get; private set;}
 
         override protected void Awake()
         {
+            Level = SaveManager.Instance.GetWonLevels();
             _totalSouls = FindObjectsOfType<Pedestrian>(true).Length;
             _wizard = FindObjectOfType<Wizard>();
             _player = FindObjectOfType<Player>();
@@ -67,6 +71,12 @@ namespace Managers
             {
                 OnIslandPassed();
             }
+        }
+
+        public async void Restart()
+        {
+            var scene = SceneManager.GetActiveScene();
+            await SceneManager.LoadSceneAsync(scene.buildIndex);
         }
 
     }
