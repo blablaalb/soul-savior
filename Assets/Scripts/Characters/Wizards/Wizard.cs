@@ -23,6 +23,8 @@ namespace Characters.Wizards
         private IdleState _idleState;
         [SerializeField]
         private GoToIslandState _goToIsland;
+        [SerializeField]
+        private GoToPortalState _goToPortalState;
 
         public int TotalSould { get; private set; }
         public int TakenSouls { get; private set; }
@@ -37,6 +39,7 @@ namespace Characters.Wizards
             _takeSoulState.Initialize(this, _animations, this.transform);
             _idleState.Initialize(_animations, this, _player);
             _goToIsland.Initialize(this.transform, this, _animations);
+            _goToPortalState.Initialize(this.transform);
         }
 
         internal async void Start()
@@ -53,6 +56,11 @@ namespace Characters.Wizards
                 _goToIsland.JumpToPosition = island.WizardLandPosition.position;
                 EnterState(_goToIsland);
             }
+        }
+
+        public void GoToPortal()
+        {
+            if (_currentState != _goToPortalState) EnterState(_goToPortalState);
         }
 
         public void TakeNextSoul()

@@ -46,7 +46,7 @@ namespace Managers
         }
 
         [NaughtyAttributes.Button]
-        private void NextIsland()
+        private bool NextIsland()
         {
             var nextIslandIndx = Array.IndexOf(_islands, Island.Active) + 1;
             if (nextIslandIndx < _islands.Length)
@@ -55,12 +55,15 @@ namespace Managers
                 nextIsland.Activate();
                 _wizard.GoToIsland(nextIsland);
                 _player.GoToIsland(nextIsland);
+                return true;
             }
+            _wizard.GoToPortal();
+            return false;
         }
 
         private void OnIslandPassed()
         {
-            NextIsland();
+            if (!NextIsland()) GameManager.Instance.OnWon();
         }
 
         public void OnSoulReturned()
